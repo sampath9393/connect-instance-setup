@@ -1,5 +1,5 @@
 {
-  "instanceAlias" : "amzn-cog-dev",
+  "instanceAlias" : "connect-demo",
   "enableInboundCalls" : "true",
   "enableOutboundCalls" : "true",
   "identityManagementType" : "CONNECT_MANAGED",
