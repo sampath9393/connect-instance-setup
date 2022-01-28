@@ -77,7 +77,7 @@ pipeline {
                           outboundCallsEnabled = "--outbound-calls-enabled"
                       }
                        
-                      sh(script: "curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"", returnStdout: true) 
+                      sh(script: "curl \"https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip\" -o \"awscliv2.zip\"", returnStdout: true) 
                       sh "unzip awscliv2.zip"
                       sh "sudo ./aws/install"
                       def version =  sh(script: "aws --version")
