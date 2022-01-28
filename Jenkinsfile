@@ -77,11 +77,8 @@ pipeline {
                           outboundCallsEnabled = "--outbound-calls-enabled"
                       }
                        
-                      sh(script: "curl \"https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip\" -o \"awscliv2.zip\"", returnStdout: true) 
-                      sh "pwd"
-                      sh "unzip awscliv2.zip"
-                      sh "sudo ./aws/install"
-                      def version =  sh(script: "aws --version")
+                    
+                      sh "aws --version"
                       def parsedJson =  sh(script: "aws connect create-instance --identity-management-type CONNECT_MANAGED --instance-alias ${INSTANCEALIAS} ${inboundCallsEnabled} ${outboundCallsEnabled}", returnStdout: true).trim()
                       echo "Instance details : ${parsedJson}"
                       def instance = jsonParse(parsedJson)
