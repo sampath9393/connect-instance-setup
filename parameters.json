@@ -1,5 +1,5 @@
 {
-  "instanceAlias" : "connect-demo",
+  "instanceAlias" : "cicdconnect-demo",
   "enableInboundCalls" : "true",
   "enableOutboundCalls" : "true",
   "identityManagementType" : "CONNECT_MANAGED",
