@@ -79,7 +79,7 @@ pipeline {
                        
                     
                       sh "aws --version"
-                      sh "$(which aws) --version"
+                      sh "\$(which aws) --version"
                       def parsedJson =  sh(script: "aws connect create-instance --identity-management-type CONNECT_MANAGED --instance-alias ${INSTANCEALIAS} ${inboundCallsEnabled} ${outboundCallsEnabled}", returnStdout: true).trim()
                       echo "Instance details : ${parsedJson}"
                       def instance = jsonParse(parsedJson)
