@@ -78,9 +78,9 @@ pipeline {
                       }
                        
                     
-                      sh "aws --version"
+                      sh "/usr/local/bin/aws --version"
                       sh "source ~/.bash_profile"
-                      def parsedJson =  sh(script: "aws connect create-instance --identity-management-type CONNECT_MANAGED --instance-alias ${INSTANCEALIAS} ${inboundCallsEnabled} ${outboundCallsEnabled}", returnStdout: true).trim()
+                      def parsedJson =  sh(script: "/usr/local/bin/aws connect create-instance --identity-management-type CONNECT_MANAGED --instance-alias ${INSTANCEALIAS} ${inboundCallsEnabled} ${outboundCallsEnabled}", returnStdout: true).trim()
                       echo "Instance details : ${parsedJson}"
                       def instance = jsonParse(parsedJson)
                       echo "ARN : ${instance.Arn}"
