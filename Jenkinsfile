@@ -84,7 +84,7 @@ pipeline {
 //                       echo "Instance details : ${parsedJson}"
 //                       def instance = jsonParse(parsedJson)
 //                       echo "ARN : ${instance.Arn}"
-                      ARN = arn:aws:connect:us-east-1:346234640958:instance/43cf1245-b791-49ef-b001-c8a4b462c451 // changed value
+                      ARN = arn:aws:connect:us-east-1:346234640958:instance/43cf1245-b791-49ef-b001-c8a4b462c451
                    }
                 }
             }
