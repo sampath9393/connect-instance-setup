@@ -100,7 +100,7 @@ pipeline {
                             println "Sleeping for 10 seconds, iteration ${count}"
                             sleep(time:10,unit:"SECONDS")
                             count++
-                            def di =  sh(script: "aws connect describe-instance --instance-id ${ARN}", returnStdout: true).trim()
+                            def di =  sh(script: "/usr/local/bin/aws connect describe-instance --instance-id ${ARN}", returnStdout: true).trim()
                             echo "Instance Describe : ${di}"
                             def instanceStatus = jsonParse(di)
                             String status = "ACTIVE"
