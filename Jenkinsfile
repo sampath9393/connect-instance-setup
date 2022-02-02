@@ -78,13 +78,13 @@ pipeline {
                       }
                        
                     
-                      sh "/usr/local/bin/aws --version"
-                      sh "source ~/.bash_profile"
-                      def parsedJson =  sh(script: "/usr/local/bin/aws connect create-instance --identity-management-type CONNECT_MANAGED --instance-alias ${INSTANCEALIAS} ${inboundCallsEnabled} ${outboundCallsEnabled}", returnStdout: true).trim()
-                      echo "Instance details : ${parsedJson}"
-                      def instance = jsonParse(parsedJson)
-                      echo "ARN : ${instance.Arn}"
-                      ARN = instance.Arn
+//                       sh "/usr/local/bin/aws --version"
+//                       sh "source ~/.bash_profile"
+//                       def parsedJson =  sh(script: "/usr/local/bin/aws connect create-instance --identity-management-type CONNECT_MANAGED --instance-alias ${INSTANCEALIAS} ${inboundCallsEnabled} ${outboundCallsEnabled}", returnStdout: true).trim()
+//                       echo "Instance details : ${parsedJson}"
+//                       def instance = jsonParse(parsedJson)
+//                       echo "ARN : ${instance.Arn}"
+                      ARN = arn:aws:connect:us-east-1:346234640958:instance/43cf1245-b791-49ef-b001-c8a4b462c451 // changed value
                    }
                 }
             }
@@ -92,7 +92,7 @@ pipeline {
         stage('Check status of the Instance'){
             steps{
                 echo 'Instance check'
-                withAWS(credentials: 'a1f5e993-be7e-41b0-ac44-d939142f2581', region: 'us-west-2') {
+                withAWS(credentials: 'a1f5e993-be7e-41b0-ac44-d939142f2581', region: 'us-east-1') {
                     script {
                       echo "Waiting for the instance status to become Active withing 5 minutes "
                       def count = 1
@@ -118,7 +118,7 @@ pipeline {
         stage('Approved Origins'){
             steps{
                 echo 'Adding approved origings'
-                withAWS(credentials: 'a1f5e993-be7e-41b0-ac44-d939142f2581', region: 'us-west-2') {
+                withAWS(credentials: 'a1f5e993-be7e-41b0-ac44-d939142f2581', region: 'us-east-1') {
                     script {
                         def ao = APPROVEDORIGINS.split(",")
                         ao.each { obj ->
