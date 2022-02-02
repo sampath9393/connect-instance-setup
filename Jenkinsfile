@@ -122,7 +122,7 @@ pipeline {
                     script {
                         def ao = APPROVEDORIGINS.split(",")
                         ao.each { obj ->
-                            def di =  sh(script: "aws connect associate-approved-origin --instance-id ${ARN} --origin ${obj}", returnStdout: true).trim()
+                            def di =  sh(script: "/usr/local/bin/aws connect associate-approved-origin --instance-id ${ARN} --origin ${obj}", returnStdout: true).trim()
                             echo "Approved Origins : ${di}"
                         };
                     }
