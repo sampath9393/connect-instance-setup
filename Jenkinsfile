@@ -163,17 +163,17 @@ pipeline {
 //             }
 //         }
 
-//         stage('Enable Contact Flow Logs'){
-//             steps{
-//                 echo 'Enabling Contact Flow Logs'
-//                 withAWS(credentials: 'a1f5e993-be7e-41b0-ac44-d939142f2581', region: 'us-west-2') {
-//                     script {
-//                         def di =  sh(script: "aws connect update-instance-attribute --instance-id ${ARN} --attribute-type CONTACTFLOW_LOGS --value ${CONTACTFLOWLOGS}", returnStdout: true).trim()
-//                         echo "Enable Contact Flow Logs : ${di}"
-//                     }
-//                 }
-//             }
-//         }
+        stage('Enable Contact Flow Logs'){
+            steps{
+                echo 'Enabling Contact Flow Logs'
+                withAWS(credentials: 'a1f5e993-be7e-41b0-ac44-d939142f2581', region: 'us-east-1') {
+                    script {
+                        def di =  sh(script: "/usr/local/bin/aws connect update-instance-attribute --instance-id ${ARN} --attribute-type CONTACTFLOW_LOGS --value ${CONTACTFLOWLOGS}", returnStdout: true).trim()
+                        echo "Enable Contact Flow Logs : ${di}"
+                    }
+                }
+            }
+        }
 
 //         stage('Enable Contact Trace Records'){
 //             steps{
