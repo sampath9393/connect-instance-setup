@@ -175,29 +175,29 @@ pipeline {
             }
         }
 
-        stage('Enable Contact Trace Records'){
-            steps{
-                echo 'Enabling CTRs into Firehose'
-                withAWS(credentials: 'a1f5e993-be7e-41b0-ac44-d939142f2581', region: 'us-east-1') {
-                    script {
-                        def di =  sh(script: "/usr/local/bin/aws connect associate-instance-storage-config --instance-id ${ARN} --resource-type CONTACT_TRACE_RECORDS --storage-config StorageType=KINESIS_STREAM,KinesisStreamConfig={StreamArn=${CONTACTTRACERECORDS}}", returnStdout: true).trim()
-                        echo "CTR : ${di}"
-                    }
-                }
-            }
-        }
+//         stage('Enable Contact Trace Records'){
+//             steps{
+//                 echo 'Enabling CTRs into Firehose'
+//                 withAWS(credentials: 'a1f5e993-be7e-41b0-ac44-d939142f2581', region: 'us-east-1') {
+//                     script {
+//                         def di =  sh(script: "/usr/local/bin/aws connect associate-instance-storage-config --instance-id ${ARN} --resource-type CONTACT_TRACE_RECORDS --storage-config StorageType=KINESIS_STREAM,KinesisStreamConfig={StreamArn=${CONTACTTRACERECORDS}}", returnStdout: true).trim()
+//                         echo "CTR : ${di}"
+//                     }
+//                 }
+//             }
+//         }
 
-        stage('Enable Agent Realtime Events'){
-            steps{
-                echo 'Enabling Agent Realtime events in Kinesis Data Streams'
-                withAWS(credentials: 'a1f5e993-be7e-41b0-ac44-d939142f2581', region: 'us-east-1') {
-                    script {
-                        def di =  sh(script: "/usr/local/bin/aws connect associate-instance-storage-config --instance-id ${ARN} --resource-type AGENT_EVENTS --storage-config StorageType=KINESIS_STREAM,KinesisStreamConfig={StreamArn=${AGENTEVENTS}}", returnStdout: true).trim()
-                        echo "Agent Events : ${di}"
-                    }
-                }
-            }
-        }
+//         stage('Enable Agent Realtime Events'){
+//             steps{
+//                 echo 'Enabling Agent Realtime events in Kinesis Data Streams'
+//                 withAWS(credentials: 'a1f5e993-be7e-41b0-ac44-d939142f2581', region: 'us-east-1') {
+//                     script {
+//                         def di =  sh(script: "/usr/local/bin/aws connect associate-instance-storage-config --instance-id ${ARN} --resource-type AGENT_EVENTS --storage-config StorageType=KINESIS_STREAM,KinesisStreamConfig={StreamArn=${AGENTEVENTS}}", returnStdout: true).trim()
+//                         echo "Agent Events : ${di}"
+//                     }
+//                 }
+//             }
+//         }
 
         stage('Enable Call Recordings'){
             steps{
