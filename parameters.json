@@ -5,6 +5,8 @@
   "identityManagementType" : "CONNECT_MANAGED",
   "approvedOrigins" : "https://www.amazon.com,https://www.aws.com",
   "contactFlowLogs" : "true",
+  "approvedLambdas" : "arn:aws:lambda:us-east-1:346234640958:function:Online-Purchase-dev-get_product_detail",
+  "approvedLexBots" : "us-east-1:OnlinePurchase",
   "contactTraceRecords" : "arn:aws:kinesis:us-east-1:346234640958:stream/CTR-connect-stream",
   "agentEvents" : "arn:aws:kinesis:us-east-1:346234640958:stream/AE-connect-stream",
   "callRecordings" : "{\"StorageType\": \"S3\",\"S3Config\": {\"BucketName\": \"connectdemo-1efb7870\",\"BucketPrefix\": \"connect/Instance_Alias/CallRecordings\",\"EncryptionConfig\":{\"EncryptionType\":\"KMS\",\"KeyId\": \"arn:aws:kms:us-east-1:346234640958:key/9a577f32-f2bd-4dfe-a149-10f78e30a7e2\"}}}",
