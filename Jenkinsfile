@@ -199,28 +199,28 @@ pipeline {
 //             }
 //         }
 
-        stage('Enable Call Recordings'){
-            steps{
-                echo 'Enabling call recordings into S3'
-                withAWS(credentials: 'a1f5e993-be7e-41b0-ac44-d939142f2581', region: 'us-east-1') {
-                    script {
-                        String sc = CALLRECORDINGS
-                        sc = sc.replaceAll('Instance_Alias', INSTANCEALIAS)
-                        echo sc
-                        def js = jsonParse(sc)
-                        sc = "StorageType=S3"
-                        //ssociationId=string,StorageType=string,S3Config={BucketName=string,BucketPrefix=string,EncryptionConfig={EncryptionType=string,KeyId=string}}
-                        sc = sc.concat(",S3Config=\\{BucketName=").concat(js.S3Config.BucketName).concat(",BucketPrefix=").concat(js.S3Config.BucketPrefix)
-                        sc = sc.concat(",EncryptionConfig=\\{EncryptionType=").concat(js.S3Config.EncryptionConfig.EncryptionType)
-                        sc = sc.concat(",KeyId=").concat(js.S3Config.EncryptionConfig.KeyId).concat("\\}\\}")
-                        echo sc
-                        js = null
-                        def di =  sh(script: "/usr/local/bin/aws connect associate-instance-storage-config --instance-id ${ARN} --resource-type CALL_RECORDINGS --storage-config ${sc}", returnStdout: true).trim()
-                        echo "Call Recordings : ${di}"
-                    }
-                }
-            }
-        }
+//         stage('Enable Call Recordings'){
+//             steps{
+//                 echo 'Enabling call recordings into S3'
+//                 withAWS(credentials: 'a1f5e993-be7e-41b0-ac44-d939142f2581', region: 'us-east-1') {
+//                     script {
+//                         String sc = CALLRECORDINGS
+//                         sc = sc.replaceAll('Instance_Alias', INSTANCEALIAS)
+//                         echo sc
+//                         def js = jsonParse(sc)
+//                         sc = "StorageType=S3"
+//                         //ssociationId=string,StorageType=string,S3Config={BucketName=string,BucketPrefix=string,EncryptionConfig={EncryptionType=string,KeyId=string}}
+//                         sc = sc.concat(",S3Config=\\{BucketName=").concat(js.S3Config.BucketName).concat(",BucketPrefix=").concat(js.S3Config.BucketPrefix)
+//                         sc = sc.concat(",EncryptionConfig=\\{EncryptionType=").concat(js.S3Config.EncryptionConfig.EncryptionType)
+//                         sc = sc.concat(",KeyId=").concat(js.S3Config.EncryptionConfig.KeyId).concat("\\}\\}")
+//                         echo sc
+//                         js = null
+//                         def di =  sh(script: "/usr/local/bin/aws connect associate-instance-storage-config --instance-id ${ARN} --resource-type CALL_RECORDINGS --storage-config ${sc}", returnStdout: true).trim()
+//                         echo "Call Recordings : ${di}"
+//                     }
+//                 }
+//             }
+//         }
 
         stage('Enable Chat Transcripts'){
             steps{
