@@ -238,7 +238,7 @@ pipeline {
                         sc = sc.concat(",KeyId=").concat(js.S3Config.EncryptionConfig.KeyId).concat("\\}\\}")
                         echo sc
                         js = null
-                        def di =  sh(script: "aws connect associate-instance-storage-config --instance-id ${ARN} --resource-type CHAT_TRANSCRIPTS --storage-config ${sc}", returnStdout: true).trim()
+                        def di =  sh(script: "/usr/local/bin/aws connect associate-instance-storage-config --instance-id ${ARN} --resource-type CHAT_TRANSCRIPTS --storage-config ${sc}", returnStdout: true).trim()
                         echo "Chat Transcripts : ${di}"
                     }
                 }
@@ -261,7 +261,7 @@ pipeline {
                         sc = sc.concat(",KeyId=").concat(js.S3Config.EncryptionConfig.KeyId).concat("\\}\\}")
                         echo sc
                         js = null
-                        def di =  sh(script: "aws connect associate-instance-storage-config --instance-id ${ARN} --resource-type SCHEDULED_REPORTS --storage-config ${sc}", returnStdout: true).trim()
+                        def di =  sh(script: "/usr/local/bin/aws connect associate-instance-storage-config --instance-id ${ARN} --resource-type SCHEDULED_REPORTS --storage-config ${sc}", returnStdout: true).trim()
                         echo "Chat Transcripts : ${di}"
                     }
                 }
@@ -284,7 +284,7 @@ pipeline {
                         sc = sc.concat(",KeyId=").concat(js.S3Config.EncryptionConfig.KeyId).concat("\\}\\}")
                         echo sc
                         js = null
-                        def di =  sh(script: "aws connect associate-instance-storage-config --instance-id ${ARN} --resource-type CHAT_ATTACHMENTS --storage-config ${sc}", returnStdout: true).trim()
+                        def di =  sh(script: "/usr/local/bin/aws connect associate-instance-storage-config --instance-id ${ARN} --resource-type CHAT_ATTACHMENTS --storage-config ${sc}", returnStdout: true).trim()
                         echo "Chat Transcripts : ${di}"
                     }
                 }
