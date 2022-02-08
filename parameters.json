@@ -7,7 +7,7 @@
   "contactFlowLogs" : "true",
   "contactTraceRecords" : "arn:aws:kinesis:us-east-1:346234640958:stream/CTR-connect-stream",
   "agentEvents" : "arn:aws:kinesis:us-east-1:346234640958:stream/AE-connect-stream",
-  "callRecordings" : "{\"StorageType\": \"S3\",\"S3Config\": {\"BucketName\": \"connectdemo-1efb7870\",\"BucketPrefix\": \"connect/Instance_Alias/CallRecordings\",\"EncryptionConfig\":{\"EncryptionType\":\"KMS\",\"KeyId\": \"arn:aws:kms:us-east-1:346234640958:key/3c632f51-1db9-4ae2-b9fa-ffa9117cce26\"}}}",
+  "callRecordings" : "{\"StorageType\": \"S3\",\"S3Config\": {\"BucketName\": \"connectdemo-1efb7870\",\"BucketPrefix\": \"connect/Instance_Alias/CallRecordings\",\"EncryptionConfig\":{\"EncryptionType\":\"KMS\",\"KeyId\": \"arn:aws:kms:us-east-1:346234640958:key/9a577f32-f2bd-4dfe-a149-10f78e30a7e2\"}}}",
   "chatTranscripts" : "{\"StorageType\": \"S3\",\"S3Config\": {\"BucketName\": \"connectdemo-1efb7870\",\"BucketPrefix\": \"connect/Instance_Alias/Chat_Transcripts\",\"EncryptionConfig\":{\"EncryptionType\":\"KMS\",\"KeyId\": \"arn:aws:kms:us-east-1:346234640958:key/3c632f51-1db9-4ae2-b9fa-ffa9117cce26\"}}}",
   "chatAttachments" : "{\"StorageType\": \"S3\",\"S3Config\": {\"BucketName\": \"connectdemo-1efb7870\",\"BucketPrefix\": \"connect/Instance_Alias/Chat_Attachments\",\"EncryptionConfig\":{\"EncryptionType\":\"KMS\",\"KeyId\": \"arn:aws:kms:us-east-1:346234640958:key/3c632f51-1db9-4ae2-b9fa-ffa9117cce26\"}}}",
   "scheduledReports" : "{\"StorageType\": \"S3\",\"S3Config\": {\"BucketName\": \"connectdemo-1efb7870\",\"BucketPrefix\": \"connect/Instance_Alias/Reports\",\"EncryptionConfig\":{\"EncryptionType\":\"KMS\",\"KeyId\": \"arn:aws:kms:us-east-1:346234640958:key/3c632f51-1db9-4ae2-b9fa-ffa9117cce26\"}}}"
