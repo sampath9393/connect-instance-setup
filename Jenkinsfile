@@ -222,53 +222,53 @@ pipeline {
             }
         }
 
-//         stage('Enable Chat Transcripts'){
-//             steps{
-//                 echo 'Enabling chat transcripts into S3'
-//                 withAWS(credentials: 'a1f5e993-be7e-41b0-ac44-d939142f2581', region: 'us-west-2') {
-//                     script {
-//                         def sc = CHATTRANSCRIPTS
-//                         sc = sc.replaceAll('Instance_Alias', INSTANCEALIAS)
-//                         echo sc
-//                         def js = jsonParse(sc)
-//                         sc = "StorageType=S3"
-//                         //ssociationId=string,StorageType=string,S3Config={BucketName=string,BucketPrefix=string,EncryptionConfig={EncryptionType=string,KeyId=string}}
-//                         sc = sc.concat(",S3Config=\\{BucketName=").concat(js.S3Config.BucketName).concat(",BucketPrefix=").concat(js.S3Config.BucketPrefix)
-//                         sc = sc.concat(",EncryptionConfig=\\{EncryptionType=").concat(js.S3Config.EncryptionConfig.EncryptionType)
-//                         sc = sc.concat(",KeyId=").concat(js.S3Config.EncryptionConfig.KeyId).concat("\\}\\}")
-//                         echo sc
-//                         js = null
-//                         def di =  sh(script: "aws connect associate-instance-storage-config --instance-id ${ARN} --resource-type CHAT_TRANSCRIPTS --storage-config ${sc}", returnStdout: true).trim()
-//                         echo "Chat Transcripts : ${di}"
-//                     }
-//                 }
-//             }
-//         }
+        stage('Enable Chat Transcripts'){
+            steps{
+                echo 'Enabling chat transcripts into S3'
+                withAWS(credentials: 'a1f5e993-be7e-41b0-ac44-d939142f2581', region: 'us-west-2') {
+                    script {
+                        def sc = CHATTRANSCRIPTS
+                        sc = sc.replaceAll('Instance_Alias', INSTANCEALIAS)
+                        echo sc
+                        def js = jsonParse(sc)
+                        sc = "StorageType=S3"
+                        //ssociationId=string,StorageType=string,S3Config={BucketName=string,BucketPrefix=string,EncryptionConfig={EncryptionType=string,KeyId=string}}
+                        sc = sc.concat(",S3Config=\\{BucketName=").concat(js.S3Config.BucketName).concat(",BucketPrefix=").concat(js.S3Config.BucketPrefix)
+                        sc = sc.concat(",EncryptionConfig=\\{EncryptionType=").concat(js.S3Config.EncryptionConfig.EncryptionType)
+                        sc = sc.concat(",KeyId=").concat(js.S3Config.EncryptionConfig.KeyId).concat("\\}\\}")
+                        echo sc
+                        js = null
+                        def di =  sh(script: "aws connect associate-instance-storage-config --instance-id ${ARN} --resource-type CHAT_TRANSCRIPTS --storage-config ${sc}", returnStdout: true).trim()
+                        echo "Chat Transcripts : ${di}"
+                    }
+                }
+            }
+        }
 
-//         stage('Enable Scheduled Reports'){
-//             steps{
-//                 echo 'Enabling S3 for storing scheduled reports'
-//                 withAWS(credentials: 'a1f5e993-be7e-41b0-ac44-d939142f2581', region: 'us-west-2') {
-//                     script {
-//                         def sc = SCHEDULEDREPORTS
-//                         sc = sc.replaceAll('Instance_Alias', INSTANCEALIAS)
-//                         echo sc
-//                         def js = jsonParse(sc)
-//                         sc = "StorageType=S3"
-//                         //ssociationId=string,StorageType=string,S3Config={BucketName=string,BucketPrefix=string,EncryptionConfig={EncryptionType=string,KeyId=string}}
-//                         sc = sc.concat(",S3Config=\\{BucketName=").concat(js.S3Config.BucketName).concat(",BucketPrefix=").concat(js.S3Config.BucketPrefix)
-//                         sc = sc.concat(",EncryptionConfig=\\{EncryptionType=").concat(js.S3Config.EncryptionConfig.EncryptionType)
-//                         sc = sc.concat(",KeyId=").concat(js.S3Config.EncryptionConfig.KeyId).concat("\\}\\}")
-//                         echo sc
-//                         js = null
-//                         def di =  sh(script: "aws connect associate-instance-storage-config --instance-id ${ARN} --resource-type SCHEDULED_REPORTS --storage-config ${sc}", returnStdout: true).trim()
-//                         echo "Chat Transcripts : ${di}"
-//                     }
-//                 }
-//             }
-//         }
+        stage('Enable Scheduled Reports'){
+            steps{
+                echo 'Enabling S3 for storing scheduled reports'
+                withAWS(credentials: 'a1f5e993-be7e-41b0-ac44-d939142f2581', region: 'us-west-2') {
+                    script {
+                        def sc = SCHEDULEDREPORTS
+                        sc = sc.replaceAll('Instance_Alias', INSTANCEALIAS)
+                        echo sc
+                        def js = jsonParse(sc)
+                        sc = "StorageType=S3"
+                        //ssociationId=string,StorageType=string,S3Config={BucketName=string,BucketPrefix=string,EncryptionConfig={EncryptionType=string,KeyId=string}}
+                        sc = sc.concat(",S3Config=\\{BucketName=").concat(js.S3Config.BucketName).concat(",BucketPrefix=").concat(js.S3Config.BucketPrefix)
+                        sc = sc.concat(",EncryptionConfig=\\{EncryptionType=").concat(js.S3Config.EncryptionConfig.EncryptionType)
+                        sc = sc.concat(",KeyId=").concat(js.S3Config.EncryptionConfig.KeyId).concat("\\}\\}")
+                        echo sc
+                        js = null
+                        def di =  sh(script: "aws connect associate-instance-storage-config --instance-id ${ARN} --resource-type SCHEDULED_REPORTS --storage-config ${sc}", returnStdout: true).trim()
+                        echo "Chat Transcripts : ${di}"
+                    }
+                }
+            }
+        }
 
-        /*stage('Enable Chat Attachments'){
+        stage('Enable Chat Attachments'){
             steps{
                 echo 'Enabling S3 for storing chat attachments'
                 withAWS(credentials: 'a1f5e993-be7e-41b0-ac44-d939142f2581', region: 'us-west-2') {
@@ -289,7 +289,7 @@ pipeline {
                     }
                 }
             }
-        }*/
+        }
 
     }
 }
