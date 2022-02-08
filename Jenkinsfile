@@ -225,7 +225,7 @@ pipeline {
         stage('Enable Chat Transcripts'){
             steps{
                 echo 'Enabling chat transcripts into S3'
-                withAWS(credentials: 'a1f5e993-be7e-41b0-ac44-d939142f2581', region: 'us-west-2') {
+                withAWS(credentials: 'a1f5e993-be7e-41b0-ac44-d939142f2581', region: 'us-east-1') {
                     script {
                         def sc = CHATTRANSCRIPTS
                         sc = sc.replaceAll('Instance_Alias', INSTANCEALIAS)
@@ -248,7 +248,7 @@ pipeline {
         stage('Enable Scheduled Reports'){
             steps{
                 echo 'Enabling S3 for storing scheduled reports'
-                withAWS(credentials: 'a1f5e993-be7e-41b0-ac44-d939142f2581', region: 'us-west-2') {
+                withAWS(credentials: 'a1f5e993-be7e-41b0-ac44-d939142f2581', region: 'us-east-1') {
                     script {
                         def sc = SCHEDULEDREPORTS
                         sc = sc.replaceAll('Instance_Alias', INSTANCEALIAS)
@@ -271,7 +271,7 @@ pipeline {
         stage('Enable Chat Attachments'){
             steps{
                 echo 'Enabling S3 for storing chat attachments'
-                withAWS(credentials: 'a1f5e993-be7e-41b0-ac44-d939142f2581', region: 'us-west-2') {
+                withAWS(credentials: 'a1f5e993-be7e-41b0-ac44-d939142f2581', region: 'us-east-1') {
                     script {
                         def sc = CHATATTACHMENTS
                         sc = sc.replaceAll('Instance_Alias', INSTANCEALIAS)
